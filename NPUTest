@@ -1,0 +1,19 @@
+Public class NPUTest extends TestCase {
+  private Selenium browser;
+  public void setup(){
+    browser = new DefaultSelenium("localhost", 4444, "*firefox","http://www.npu.edu/)";
+    browser.start();
+  }
+  
+  public void testNPU(){
+    browser.open("https://osc.npu.edu/Account/Logon?enc=td2nmreLJyypG4lX9oxb4loYfZujQFCgHQ8+m5OArT2gsrXBWqLJa/xG1l8vBXie");
+    browser.type("mx9957",""12345678");
+    browser.click("btnG");
+    browser.waitForPageToLoad("5000");
+    assertEquals("Alumni",browser.getTitle());
+  }
+  
+  public void tearDown(){
+    browser.stop();
+  }
+  }
